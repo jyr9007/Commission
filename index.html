@@ -12,31 +12,25 @@
         <button onclick="calculateCommission()">Start Commission Calculator</button>
         <div id="result" class="output"></div>
     </div>
-
     <script>
         function calculateCommission() {
             let subtotal = 0;
             let input;
             let username = prompt("Please enter your name:", "username");
-
             // Validate username
             if (!username) {
                 alert("You must enter your name to proceed.");
                 return;
             }
-
             do {
                 input = prompt("Enter a sales amount or type 'Done' to finish:");
-
                 // Handle cancel
                 if (input === null) {
                     alert("Operation canceled.");
                     return;
                 }
-
                 // Exit loop if "Done" is entered
                 if (input.toLowerCase() === "done") break;
-
                 // Parse and validate sales amount
                 let sale = parseFloat(input);
                 if (isNaN(sale) || sale < 0) {
@@ -45,7 +39,6 @@
                     subtotal += sale;
                 }
             } while (true);
-
             // Determine commission rate
             let commissionRate = 0;
             if (subtotal > 0 && subtotal <= 499.99) {
@@ -55,11 +48,9 @@
             } else if (subtotal >= 1000) {
                 commissionRate = 15;
             }
-
             // Calculate commission and total earnings
             let commission = (subtotal * commissionRate) / 100;
             let totalEarnings = subtotal + commission;
-
             // Display results
             let result = `
                 <p>Hello <span class="highlight">${username}</span>, here is your Weekly Commission Report:</p>
